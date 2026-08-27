@@ -1,0 +1,7 @@
+interface:
+  display_name: "Memory Maintenance"
+  short_description: "Audit and clean agent memory safely"
+  default_prompt: "Use $memory-maintenance to audit existing memory and instruction files."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Juanify"
+  short_description: "Rewrite professional text in Juan’s technical voice"
+  default_prompt: "Use $juanify to rewrite the supplied text in Juan’s established technical and customer communication style."
+policy:
+  allow_implicit_invocation: false

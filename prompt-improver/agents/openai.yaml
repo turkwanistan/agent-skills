@@ -1,0 +1,7 @@
+interface:
+  display_name: "Prompt Improver"
+  short_description: "Tighten prompts without changing intent"
+  default_prompt: "Use $prompt-improver to improve this prompt without changing its meaning."
+
+policy:
+  allow_implicit_invocation: false
