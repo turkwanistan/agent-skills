@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Skill"
+  short_description: "Run exhaustive evidence-driven research"
+  default_prompt: "Use $research-skill to research this topic thoroughly, save the canonical Markdown report on Optiplex, and present the result in chat."
+
+policy:
+  allow_implicit_invocation: false

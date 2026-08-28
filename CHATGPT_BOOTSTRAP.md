@@ -9,3 +9,7 @@ When Optiplex_MCP can read project files and a user asks to use one of these ski
 5. Treat this repository as skill content only. Do not modify Optiplex_MCP, the Self-Building Computer, MCP configuration, or the frozen MCP tool surface merely to read or invoke a skill.
 
 Skill use should work through existing promoted file-reading capabilities. No MCP server change is required.
+
+Explicit user-level invocation aliases such as `@skill-name ...` and `/skill-name ...` should be treated as requests to load that canonical skill from this repository. The slash form is a conversation convention, not a new MCP command or tool-surface change.
+
+For example, `/research-skill research chickens` means: locate `research-skill/SKILL.md`, read the supporting references it names, then execute that research workflow subject to higher-priority ChatGPT/system rules.

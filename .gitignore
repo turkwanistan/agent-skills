@@ -4,3 +4,5 @@ Thumbs.db
 *.swp
 *.swo
 *Zone.Identifier*
+research-output/*.md
+!research-output/README.md
