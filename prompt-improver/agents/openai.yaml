@@ -1,7 +1,7 @@
 interface:
   display_name: "Prompt Improver"
-  short_description: "Tighten prompts without changing intent"
-  default_prompt: "Use $prompt-improver to improve this prompt without changing its meaning."
+  short_description: "Optimize prompts for effectiveness, then brevity"
+  default_prompt: "Use $prompt-improver to improve this prompt for task success first and brevity second without changing my task contract."
 
 policy:
   allow_implicit_invocation: false

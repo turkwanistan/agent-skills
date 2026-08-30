@@ -4,7 +4,7 @@ Canonical standalone repository for reusable agent skills. It is intentionally i
 
 ## Canonical skills
 
-- `prompt-improver/` — tighten an explicitly supplied draft prompt while preserving its meaning and constraints.
+- `prompt-improver/` — optimize an explicitly supplied draft prompt for task success first and brevity second while preserving its task contract.
 - `juanify/` — rewrite professional text in Juan's established technical/customer communication style.
 - `ponytail/` — apply a deliberately minimal, YAGNI-first approach to coding work.
 - `ponytail-review/` — review code specifically for removable over-engineering and unnecessary complexity.

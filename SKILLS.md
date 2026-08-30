@@ -2,7 +2,7 @@
 
 | Skill | Canonical file | Purpose |
 | --- | --- | --- |
-| `prompt-improver` | `prompt-improver/SKILL.md` | Make the smallest useful rewrite of an explicitly invoked draft prompt while preserving facts, constraints, decisions, permissions, and deliverable semantics. |
+| `prompt-improver` | `prompt-improver/SKILL.md` | Optimize an explicitly invoked draft prompt for task success first and brevity second while preserving facts, constraints, decisions, permissions, and deliverable semantics. |
 | `juanify` | `juanify/SKILL.md` | Rewrite supplied professional text in Juan's established technical and customer-communication style without changing factual or technical meaning. |
 | `ponytail` | `ponytail/SKILL.md` | Keep coding solutions as small and native as practical: YAGNI, reuse existing code, prefer stdlib/platform features, and avoid unnecessary dependencies or abstraction. |
 | `ponytail-review` | `ponytail-review/SKILL.md` | Review code only for over-engineering and identify what can be deleted, replaced with stdlib/native features, or simplified. |
