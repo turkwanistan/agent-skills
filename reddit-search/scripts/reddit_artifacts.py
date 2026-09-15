@@ -174,12 +174,17 @@ def summarize_run(run_dir: Path) -> dict[str, Any]:
     summary: dict[str, Any] = {
         "run_dir": str(run_dir),
         "unique_threads": 0,
+        "threads_inspected": 0,
         "subreddits": [],
+        "comments_examined": 0,
+        "branches_examined": 0,
         "evidence_items": 0,
         "evidence_threads": 0,
         "query_batches": 0,
         "query_families": 0,
+        "channels_used": [],
         "new_high_value_threads_by_batch": [],
+        "last_two_high_value_yield": [],
         "remaining_gaps": [],
     }
 
@@ -190,6 +195,22 @@ def summarize_run(run_dir: Path) -> dict[str, Any]:
         summary["unique_threads"] = len({key for key in keys if key})
         summary["subreddits"] = sorted(
             {str(row["subreddit"]) for row in candidates if row.get("subreddit")}
+        )
+        inspected_statuses = {"read", "inspected", "partial", "complete"}
+        summary["threads_inspected"] = sum(
+            1
+            for row in candidates
+            if str(row.get("retrieval_status") or "").strip().lower() in inspected_statuses
+        )
+        summary["comments_examined"] = sum(
+            value
+            for row in candidates
+            if isinstance((value := row.get("comments_examined")), int) and value >= 0
+        )
+        summary["branches_examined"] = sum(
+            value
+            for row in candidates
+            if isinstance((value := row.get("branches_examined")), int) and value >= 0
         )
 
     evidence_path = run_dir / "evidence.jsonl"
@@ -225,6 +246,10 @@ def summarize_run(run_dir: Path) -> dict[str, Any]:
             yields.append(value if isinstance(value, int) else None)
         summary["query_families"] = len(query_families)
         summary["new_high_value_threads_by_batch"] = yields
+        summary["last_two_high_value_yield"] = yields[-2:]
+        channels = coverage.get("channels_used") or []
+        if isinstance(channels, list):
+            summary["channels_used"] = sorted({str(item) for item in channels if item})
         gaps = coverage.get("remaining_gaps") or []
         if isinstance(gaps, list):
             summary["remaining_gaps"] = [str(item) for item in gaps]

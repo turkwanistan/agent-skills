@@ -1,7 +1,7 @@
 interface:
   display_name: "Reddit Search"
   short_description: "Run coverage-audited Reddit research"
-  default_prompt: "Use $reddit-search to search Reddit broadly, inspect high-value threads/comments, and synthesize the evidence with coverage and bias controls."
+  default_prompt: "Use $reddit-search at standard depth to search Reddit broadly, quantify cross-thread/community recurrence, inspect disagreement, and report concrete coverage and saturation."
 
 policy:
   allow_implicit_invocation: false

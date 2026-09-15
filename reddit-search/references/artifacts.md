@@ -39,7 +39,8 @@ Keep fields optional when unavailable rather than inventing values.
   "source_class": "live_reddit",
   "relevance": "detailed long-term owner thread",
   "retrieval_status": "read",
-  "comments_examined": 35
+  "comments_examined": 35,
+  "branches_examined": 8
 }
 ```
 
@@ -87,6 +88,12 @@ Use `stance` values that fit the task; do not force everything into positive/neg
       "new_counterevidence": 1
     }
   ],
+  "channels_used": ["web_search", "live_reddit"],
+  "threads_discovered": 27,
+  "threads_inspected": 16,
+  "communities_represented": 4,
+  "comments_examined": 143,
+  "branches_examined": 31,
   "remaining_gaps": ["little evidence for model v3"],
   "saturation_note": "Later comparison/adversarial batches produced no new major themes; model-v3 coverage remains thin."
 }
@@ -96,7 +103,7 @@ The model, not the helper script, decides whether research is saturated. The hel
 
 ## Analysis record
 
-Keep analysis derived from evidence IDs so conclusions can be regenerated without reacquiring Reddit.
+Keep analysis derived from evidence IDs so conclusions can be regenerated without reacquiring Reddit. For recommendation/sentiment/trend work, make recurrence explicit enough to support report language such as “recurring,” “polarizing,” or “strongest in the sample.”
 
 ```json
 {
@@ -106,6 +113,9 @@ Keep analysis derived from evidence IDs so conclusions can be regenerated withou
       "summary": "...",
       "independent_threads": 5,
       "communities": ["example", "another"],
+      "signal_type": "cross_thread_recurrence",
+      "direction": "mostly_negative",
+      "time_span": "2026-07 through 2026-09",
       "evidence_ids": ["abc123:def456"],
       "counterevidence_ids": ["ghi789:jkl012"],
       "limitations": ["mostly model v2 reports"]
@@ -115,6 +125,8 @@ Keep analysis derived from evidence IDs so conclusions can be regenerated withou
 ```
 
 Do not infer broad prevalence from `independent_threads` or comment counts. These fields describe the retrieved Reddit sample only.
+
+For recommendation-style runs, `analysis.json` may use `items` instead of `themes` with the same recurrence fields. Useful `signal_type` values include `current_momentum`, `cross_thread_recurrence`, `evergreen_recurrence`, and combinations when justified. A qualitative superlative or frequency claim in `report.md` should be traceable to these counts; if the counts cannot support it, weaken the wording.
 
 ## Helper script
 

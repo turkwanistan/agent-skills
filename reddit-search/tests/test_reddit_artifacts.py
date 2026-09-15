@@ -38,11 +38,15 @@ class ArtifactTests(unittest.TestCase):
                     "post_id": "abc123",
                     "canonical_url": "https://www.reddit.com/r/foo/comments/abc123",
                     "subreddit": "foo",
+                    "retrieval_status": "read",
+                    "comments_examined": 12,
+                    "branches_examined": 3,
                 },
                 {
                     "post_id": "def456",
                     "canonical_url": "https://www.reddit.com/r/bar/comments/def456",
                     "subreddit": "bar",
+                    "retrieval_status": "discovered",
                 },
             ]
             evidence = [
@@ -62,6 +66,7 @@ class ArtifactTests(unittest.TestCase):
                             {"label": "exact", "new_high_value_threads": 2},
                             {"label": "adversarial", "new_high_value_threads": 0},
                         ],
+                        "channels_used": ["web_search", "live_reddit", "web_search"],
                         "remaining_gaps": ["older versions"],
                     }
                 ),
@@ -74,10 +79,15 @@ class ArtifactTests(unittest.TestCase):
             summary = reddit_artifacts.summarize_run(run_dir)
             self.assertEqual(summary["unique_threads"], 2)
             self.assertEqual(summary["subreddits"], ["bar", "foo"])
+            self.assertEqual(summary["threads_inspected"], 1)
+            self.assertEqual(summary["comments_examined"], 12)
+            self.assertEqual(summary["branches_examined"], 3)
             self.assertEqual(summary["evidence_items"], 2)
             self.assertEqual(summary["evidence_threads"], 2)
             self.assertEqual(summary["query_batches"], 2)
             self.assertEqual(summary["new_high_value_threads_by_batch"], [2, 0])
+            self.assertEqual(summary["last_two_high_value_yield"], [2, 0])
+            self.assertEqual(summary["channels_used"], ["live_reddit", "web_search"])
 
     def test_duplicate_candidate_is_error(self):
         with tempfile.TemporaryDirectory() as tmp:
