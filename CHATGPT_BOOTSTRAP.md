@@ -10,6 +10,6 @@ When Optiplex_MCP can read project files and a user asks to use one of these ski
 
 Skill use should work through existing promoted file-reading capabilities. No MCP server change is required.
 
-Explicit user-level invocation aliases such as `@skill-name ...` and `/skill-name ...` should be treated as requests to load that canonical skill from this repository. The slash form is a conversation convention, not a new MCP command or tool-surface change.
+Explicit user-level invocation aliases such as `@skill-name ...`, `/skill-name ...`, and a leading registered-skill prefix such as `reddit-search: ...` should be treated as requests to load that canonical skill from this repository. These forms are conversation conventions, not new MCP commands or tool-surface changes.
 
 For example, `/research-skill research chickens` means: locate `research-skill/SKILL.md`, read the supporting references it names, then execute that research workflow subject to higher-priority ChatGPT/system rules.
